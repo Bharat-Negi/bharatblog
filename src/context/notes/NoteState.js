@@ -5,9 +5,9 @@ import teamData from '@/json/team.json'
 const NoteState = (props) => {
     const data = teamData;
     return(
-        <NotesContext.Provider value={data}>
+        <NotesContext value={data}>
             {props.children}
-        </NotesContext.Provider>
+        </NotesContext>
     )
 }
 

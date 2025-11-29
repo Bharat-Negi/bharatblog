@@ -48,12 +48,6 @@ export default function LeftMenu({
     loadUser();
   }, []); // runs only once when dashboard page loads
 
-  // user per first word Capitalize
-  const capitalize = (str?: string) => {
-    if (!str) return "";
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  };
-
   return (
     <div className={`sidebar ${sidebarClosed ? "close" : ""}`}>
       {/* Logo */}
