@@ -3,18 +3,12 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import LeftMenu from "@/components/dashboard/left-menu/LeftMenu";
 import { Col, Container, Row } from "react-bootstrap";
 import CardPage from "@/components/dashboard/card/CardPage";
 
-export default function dashPage() {
+export default function dashPage({ toggleSidebar, sidebarClosed }:any) {
   const [data, setData] = useState("nothing");
   const [userData, setUserData] = useState<any>();
-  const [sidebarClosed, setSidebarClosed] = useState(false);
-
-  const toggleSidebar = () => {
-    setSidebarClosed(!sidebarClosed);
-  };
 
   const getUserDetails = async () => {
     try {
@@ -24,9 +18,7 @@ export default function dashPage() {
     } catch (error) {
       console.log("Logout Failed");
     }
-  };
-
-  
+  };  
 
   useEffect(() => {
     const alreadyRan = localStorage.getItem("login_toast_shown");
@@ -50,40 +42,34 @@ export default function dashPage() {
   };
 
   return (
-    <>
-      <LeftMenu sidebarClosed={sidebarClosed} toggleSidebar={toggleSidebar} />
-      <section className="home-section">
-        <div className="home-content">
-          <i className="bx bx-menu" onClick={toggleSidebar}></i>
-        </div>
-        <Container fluid>
-          <Row>
-            <Col>
-              <h1 className="h4">Admin Dashboard</h1>
-            </Col>
-          </Row>
-          <Row>
-            <Col md={4}>
-              <CardPage 
-                name={capitalize(userData?.username)}
-                email={userData?.email}
-              />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <h2>
-                {data === "nothing" ? (
-                  "Nothing"
-                ) : (
-                  <Link href={`/dash-page/${data}`}>{data}</Link>
-                )}
-              </h2>
-              <button onClick={getUserDetails}>User Details</button>
-            </Col>
-          </Row>
-        </Container>
-      </section>
+    <>      
+      <Container fluid>
+        <Row>
+          <Col>
+            <h1 className="h4">Admin Dashboard</h1>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={4}>
+            <CardPage 
+              name={capitalize(userData?.username)}
+              email={userData?.email}
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <h2>
+              {data === "nothing" ? (
+                "Nothing"
+              ) : (
+                <Link href={`/dash-page/${data}`}>{data}</Link>
+              )}
+            </h2>
+            <button onClick={getUserDetails}>User Details</button>
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 }

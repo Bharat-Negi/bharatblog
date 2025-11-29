@@ -10,11 +10,6 @@ import CardPage from "@/components/dashboard/card/CardPage";
 export default function dashPage() {
   const [data, setData] = useState("nothing");
   const [userData, setUserData] = useState<any>();
-  const [sidebarClosed, setSidebarClosed] = useState(false);
-
-  const toggleSidebar = () => {
-    setSidebarClosed(!sidebarClosed);
-  };
 
   useEffect(() => {
     const alreadyRan = localStorage.getItem("login_toast_shown");
@@ -50,35 +45,29 @@ export default function dashPage() {
 
   return (
     <>
-      <LeftMenu sidebarClosed={sidebarClosed} toggleSidebar={toggleSidebar} />
-      <section className="home-section">
-        <div className="home-content">
-          <i className="bx bx-menu" onClick={toggleSidebar}></i>
-        </div>
-        <Container fluid>
-          <Row>
-            <Col md={4}>
-              <CardPage
-                name={capitalize(userData?.username)}
-                email={userData?.email}
-              />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <h2>
-                {data === "nothing" ? (
-                  "Nothing"
-                ) : (
-                  <Link href={`/dash-page/${data}`}>{data}</Link>
-                )}
-              </h2>
-              <h3>{}</h3>
-              <button onClick={getUserDetails}>User Details</button>
-            </Col>
-          </Row>
-        </Container>
-      </section>
+      <Container fluid>
+        <Row>
+          <Col md={4}>
+            <CardPage
+              name={capitalize(userData?.username)}
+              email={userData?.email}
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <h2>
+              {data === "nothing" ? (
+                "Nothing"
+              ) : (
+                <Link href={`/dash-page/${data}`}>{data}</Link>
+              )}
+            </h2>
+            <h3>{}</h3>
+            <button onClick={getUserDetails}>User Details</button>
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 }
