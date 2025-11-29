@@ -1,0 +1,36 @@
+import React from "react";
+
+export default function BlogPagination() {
+  return (
+    <section id="blog-pagination" className="blog-pagination section">
+      <div className="container">
+        <div className="d-flex justify-content-center">
+          <ul>
+            <li>
+              <a href="#">
+                <i className="bi bi-chevron-left"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" className="active">1</a>
+            </li>
+            <li>
+              <a href="#">2</a>
+            </li>
+            <li>
+              <a href="#">3</a>
+            </li>
+            <li>
+              <a href="#">4</a>
+            </li>
+            <li>
+              <a href="#">
+                <i className="bi bi-chevron-right"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}

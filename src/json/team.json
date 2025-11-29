@@ -1,0 +1,231 @@
+{
+    "team": [
+        {
+            "id": 1,
+            "imgUrl": "images/team/team-1.jpg",
+            "name": "walter white",
+            "designation": "chief executive officer",
+            "shortNote": "Explicabo voluptatem qui dolorum quasi",
+            "twitter": "https://x.com/",
+            "facebook": "https://www.facebook.com/",
+            "instagram": "https://www.instagram.com/accounts/login/?source=logged_out_sem",
+            "linkedin": "https://www.linkedin.com/"
+        },
+        {
+            "id": 2,
+            "imgUrl": "images/team/team-2.jpg",
+            "name": "sarah jhonson",
+            "designation": "product manager",
+            "shortNote": "Aut maiores voluptates amet et quis praesentium qui senda para",
+            "twitter": "https://x.com/",
+            "facebook": "https://www.facebook.com/",
+            "linkedin": "https://www.linkedin.com/"
+        },
+        {
+            "id": 3,
+            "imgUrl": "images/team/team-3.jpg",
+            "name": "william anderson",
+            "designation": "CTO",
+            "shortNote": "Quisquam facilis cum velit laborum corrupti fuga rerum quia",
+            "facebook": "https://www.facebook.com/",
+            "instagram": "https://www.instagram.com/accounts/login/?source=logged_out_sem",
+            "linkedin": "https://www.linkedin.com/"
+        },
+        {
+            "id": 4,
+            "imgUrl": "images/team/team-4.jpg",
+            "name": "amanda jepson",
+            "designation": "accountant",
+            "shortNote": "Dolorum tempora officiis odit laborum officiis et et accusamus",
+            "twitter": "https://x.com/",
+            "facebook": "https://www.facebook.com/",
+            "instagram": "https://www.instagram.com/accounts/login/?source=logged_out_sem"
+        }
+    ],
+    "homeBanner": [
+        {
+            "id": 1,
+            "imgUrl": "images/post-slide-1.jpg",
+            "heading": "The Best Homemade Masks for Face (keep the Pimples Away)",
+            "shortNote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque." 
+        },
+        {
+            "id": 2,
+            "imgUrl": "images/post-slide-2.jpg",
+            "heading": "17 Pictures of Medium Length Hair in Layers That Will Inspire Your New Haircut",
+            "shortNote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque." 
+        },
+        {
+            "id": 3,
+            "imgUrl": "images/post-slide-3.jpg",
+            "heading": "13 Amazing Poems from Shel Silverstein with Valuable Life Lessons",
+            "shortNote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque." 
+        },
+        {
+            "id": 4,
+            "imgUrl": "images/post-slide-4.jpg",
+            "heading": "9 Half-up/half-down Hairstyles for Long and Medium Hair",
+            "shortNote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque." 
+        }
+    ],
+    "blogList": [
+        {
+            "id": 1,
+            "postTitle": "Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia",
+            "imgUrl": "/images/blog/blog-1.jpg",
+            "postDate": "December 12",
+            "author": "John Doe",
+            "newType": "Politics",
+            "blogUrl": "post-1",
+            "comments": 12,
+            "shortNote": "Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta."
+        },
+        {
+            "id": 2,
+            "postTitle": "Nisi magni odit consequatur autem nulla dolorem",
+            "imgUrl": "/images/blog/blog-2.jpg",
+            "postDate": "March 19",
+            "author": "Julia Parker",
+            "newType": "Economics",
+            "blogUrl": "post-2",
+            "comments": 10,
+            "shortNote": "Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta."
+        },
+        {
+            "id": 3,
+            "postTitle": "Possimus soluta ut id suscipit ea ut. In quo quia et soluta libero sit sint.",
+            "imgUrl": "/images/blog/blog-3.jpg",
+            "postDate": "June 24",
+            "author": "Maria Doe",
+            "newType": "Sports",
+            "blogUrl": "post-3",
+            "comments": 6,
+            "shortNote": "Aut iste neque ut illum qui perspiciatis similique recusandae non. Fugit autem dolorem labore omnis et. Eum temporibus fugiat voluptate enim tenetur sunt omnis."
+        },
+        {
+            "id": 4,
+            "postTitle": "Non rem rerum nam cum quo minus. Dolor distinctio deleniti explicabo eius exercitationem.",
+            "imgUrl": "/images/blog/blog-4.jpg",
+            "postDate": "June 28",
+            "author": "Maria Doe",
+            "newType": "Sports",
+            "blogUrl": "post-4",
+            "comments": 5,
+            "shortNote": "Aut iste neque ut illum qui perspiciatis similique recusandae non. Fugit autem dolorem labore omnis et. Eum temporibus fugiat voluptate enim tenetur sunt omnis."
+        },
+        {
+            "id": 5,
+            "postTitle": "Accusamus quaerat aliquam qui debitis facilis consequatur",
+            "imgUrl": "/images/blog/blog-5.jpg",
+            "postDate": "September 17",
+            "author": "John Parker",
+            "newType": "Politics",
+            "blogUrl": "post-5",
+            "comments": 10,
+            "shortNote": "In itaque assumenda aliquam voluptatem qui temporibus iusto nisi quia. Autem vitae quas aperiam nesciunt mollitia tempora odio omnis. Ipsa odit sit ut amet necessitatibus. Quo ullam ut corrupti autem consequuntur totam dolorem."
+        },
+        {
+            "id": 6,
+            "postTitle": "Distinctio provident quibusdam numquam aperiam aut",
+            "imgUrl": "/images/blog/blog-6.jpg",
+            "postDate": "December 07",
+            "author": "Julia White",
+            "newType": "Economics",
+            "blogUrl": "post-6",
+            "comments": 15,
+            "shortNote": "Expedita et temporibus eligendi enim molestiae est architecto praesentium dolores. Illo laboriosam officiis quis. Labore officia quia sit voluptatem nisi est dignissimos totam. Et voluptate et consectetur voluptatem id dolor magni impedit. Omnis dolores sit."
+        }
+    ],
+    "footerLink": [
+        {
+            "useful_Links": [
+                {
+                    "linkName": "Home",
+                    "linkUrl": "/"
+                },
+                {
+                    "linkName": "About us",
+                    "linkUrl": "/"
+                },
+                {
+                    "linkName": "Service",
+                    "linkUrl": "/"
+                },
+                {
+                    "linkName": "Terms of services",
+                    "linkUrl": "/"
+                },
+                {
+                    "linkName": "Privacy ploicy",
+                    "linkUrl": "/"
+                }
+            ],
+            "our_Services": [
+                {
+                    "linkName": "Web Design",
+                    "linkUrl": "/"
+                },
+                {
+                    "linkName": "Web Development",
+                    "linkUrl": "/"
+                },
+                {
+                    "linkName": "Product Management",
+                    "linkUrl": "/"
+                },
+                {
+                    "linkName": "Marketing",
+                    "linkUrl": "/"
+                },
+                {
+                    "linkName": "Graphic Design",
+                    "linkUrl": "/"
+                }
+            ],
+            "hic_Solutasetp": [
+                {
+                    "linkName": "Molestiae accusamus iure",
+                    "linkUrl": "/"
+                },
+                {
+                    "linkName": "Excepturi dignissimos",
+                    "linkUrl": "/"
+                },
+                {
+                    "linkName": "Suscipit distinctio",
+                    "linkUrl": "/"
+                },
+                {
+                    "linkName": "Dilecta",
+                    "linkUrl": "/"
+                },
+                {
+                    "linkName": "Sit quas consectetur",
+                    "linkUrl": "/"
+                }
+            ],
+            "nobis_illum": [
+                {
+                    "linkName": "Ipsam",
+                    "linkUrl": "/"
+                },
+                {
+                    "linkName": "Laudantium dolorum",
+                    "linkUrl": "/"
+                },
+                {
+                    "linkName": "Dinera",
+                    "linkUrl": "/"
+                },
+                {
+                    "linkName": "Trodelas",
+                    "linkUrl": "/"
+                },
+                {
+                    "linkName": "Flexo",
+                    "linkUrl": "/"
+                }
+            ]
+        }
+    ]
+}
