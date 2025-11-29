@@ -5,9 +5,11 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import LeftMenu from "@/components/dashboard/left-menu/LeftMenu";
 import { Col, Container, Row } from "react-bootstrap";
+import CardPage from "@/components/dashboard/card/CardPage";
 
 export default function dashPage() {
   const [data, setData] = useState("nothing");
+  const [userData, setUserData] = useState<any>();
   const [sidebarClosed, setSidebarClosed] = useState(false);
 
   const toggleSidebar = () => {
@@ -18,11 +20,13 @@ export default function dashPage() {
     try {
       const res = await axios.post("/api/users/me");
       console.log(res.data);
-      setData(res.data.data._id);
+      setData(res.data.data._id);      
     } catch (error) {
       console.log("Logout Failed");
     }
   };
+
+  
 
   useEffect(() => {
     const alreadyRan = localStorage.getItem("login_toast_shown");
@@ -34,9 +38,16 @@ export default function dashPage() {
     async function loadUser() {
       const dataFile = await axios.post("/api/users/me");
       console.log("hello:- ", dataFile.data.data.isAdmin);
+      setUserData(dataFile.data.data);
     }
     loadUser();
   }, []); // runs only once when dashboard page loads
+
+  // user per first word Capitalize
+  const capitalize = (str?: string) => {
+    if (!str) return "";
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
 
   return (
     <>
@@ -52,8 +63,11 @@ export default function dashPage() {
             </Col>
           </Row>
           <Row>
-            <Col>
-              <h1 className="h4">Admin Dashboard</h1>
+            <Col md={4}>
+              <CardPage 
+                name={capitalize(userData?.username)}
+                email={userData?.email}
+              />
             </Col>
           </Row>
           <Row>

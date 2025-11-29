@@ -88,11 +88,11 @@ export default function LeftMenu({sidebarClosed, toggleSidebar}: SidebarProps) {
               </a>
             </li>
             <li>
-              <a href="#">News Post</a>
-            </li>
-            <li>
               <a href="#">New Post</a>
             </li>
+            <li>
+              <a href="#">News Post</a>
+            </li>            
             <li>
               <a href="#">Old Post</a>
             </li>
