@@ -1,14 +1,21 @@
-import React, { useEffect, useState } from "react";
+"use client";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
+import Link from "next/link";
+import notesContext from "@/context/notes/notesContext";
 
 type SidebarProps = {
   sidebarClosed: boolean;
   toggleSidebar: () => void;
 };
 
-export default function LeftMenu({sidebarClosed, toggleSidebar}: SidebarProps) {
+export default function LeftMenu({
+  sidebarClosed,
+  toggleSidebar,
+}: SidebarProps) {
+  const { menuItems } = useContext(notesContext);
   const router = useRouter();
   const [submenuOpen, setSubmenuOpen] = useState(null); // which menu is open
   const [userData, setUserData] = useState<any>();
@@ -49,68 +56,84 @@ export default function LeftMenu({sidebarClosed, toggleSidebar}: SidebarProps) {
 
   return (
     <div className={`sidebar ${sidebarClosed ? "close" : ""}`}>
+      {/* Logo */}
       <div className="logo-details">
         <i className="bx bxl-c-plus-plus"></i>
         <span className="logo_name">CodingLab</span>
       </div>
-      <ul className="nav-links">
-        <li>
-          <a href="#">
-            <i className="bx bx-grid-alt"></i>
-            <span className="link_name">Dashboard</span>
-          </a>
-        </li>
-        {userData?.isAdmin ? (
-          <li>
-            <a href="#">
-              <i className="bx bx-collection"></i>
-              <span className="link_name">Users</span>
-            </a>
-          </li>
-        ) : (
-          ""
-        )}
-        <li className={`${submenuOpen === 1 ? "showMenu" : ""}`}>
-          <div className="iocn-link">
-            <a href="#">
-              <i className="bx bx-book-alt"></i>
-              <span className="link_name">Posts</span>
-            </a>
-            <i
-              className="bx bxs-chevron-down arrow"
-              onClick={() => toggleSubmenu(1)}
-            ></i>
-          </div>
-          <ul className="sub-menu">
-            <li>
-              <a className="link_name" href="#">
-                Posts
-              </a>
-            </li>
-            <li>
-              <a href="#">New Post</a>
-            </li>
-            <li>
-              <a href="#">News Post</a>
-            </li>            
-            <li>
-              <a href="#">Old Post</a>
-            </li>
-          </ul>
-        </li>
 
-        {/* profile section */}
+      {/* Menu */}
+      <ul className="nav-links">
+        {menuItems.map((item:any, index:number) => {
+          // Hide admin items for normal users
+          if (item.adminOnly && !userData?.isAdmin) return null;
+
+          // Normal menu item
+          if (!item.submenu) {
+            return (
+              <li key={index}>
+                <Link href={item.path}>
+                  <i className={item.icon}></i>
+                  <span className="link_name">{item.label}</span>
+                </Link>
+              </li>
+            );
+          }
+
+          // Submenu item (POSTS)
+          return (
+            <li
+              key={index}
+              className={`${submenuOpen === index ? "showMenu" : ""}`}
+            >
+              <div className="iocn-link">
+                <Link href={item.path}>
+                  <i className={item.icon}></i>
+                  <span className="link_name">{item.label}</span>
+                </Link>
+
+                <i
+                  className="bx bxs-chevron-down arrow"
+                  onClick={() => toggleSubmenu(index)}
+                ></i>
+              </div>
+
+              {/* Submenu */}
+              <ul className="sub-menu">
+                <li>
+                  <Link className="link_name" href="#">
+                    {item.label}
+                  </Link>
+                </li>
+
+                {item.submenu.map((sub:any, i:number) => (
+                  <li key={i}>
+                    <Link href={sub.path}>{sub.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          );
+        })}
+
+        {/* Profile Section */}
         <li>
           <div className="profile-details">
             <div className="profile-content">
               <img src="/images/profile.jpg" alt="profileImg" />
             </div>
+
             <div className="name-job">
               <div className="profile_name">
-                {capitalize(userData?.username)}
+                {userData?.username?.charAt(0).toUpperCase() +
+                  userData?.username?.slice(1)}
               </div>
-              <div className="job">{userData?.isAdmin ? "Admin" : "User"}</div>
+
+              <div className="job">
+                {userData?.isAdmin ? "Admin" : "User"}
+              </div>
             </div>
+
             <i onClick={logout} className="bx bx-log-out"></i>
           </div>
         </li>

@@ -227,5 +227,30 @@
                 }
             ]
         }
+    ],
+    "menuItems" : [
+        {
+            "label": "Dashboard",
+            "icon": "bx bx-grid-alt",
+            "path": "/dash-page",
+            "adminOnly": false
+        },
+        {
+            "label": "Users",
+            "icon": "bx bx-collection",
+            "path": "/dash-page/users",
+            "adminOnly": true
+        },
+        {
+            "label": "Posts",
+            "icon": "bx bx-book-alt",
+            "path": "#",
+            "adminOnly": false,
+            "submenu": [
+                { "label": "New Post", "path": "/dash-page/newpost" },
+                { "label": "News Post", "path": "#" },
+                { "label": "Old Post", "path": "#" }
+            ]
+        }
     ]
 }
