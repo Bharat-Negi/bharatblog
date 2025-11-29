@@ -4,7 +4,6 @@ import teamData from '@/json/team.json'
 
 const NoteState = (props) => {
     const data = teamData;
-
     return(
         <NotesContext.Provider value={data}>
             {props.children}
