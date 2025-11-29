@@ -8,10 +8,7 @@ type SidebarProps = {
   toggleSidebar: () => void;
 };
 
-export default function LeftMenu({
-  sidebarClosed,
-  toggleSidebar,
-}: SidebarProps) {
+export default function LeftMenu({sidebarClosed, toggleSidebar}: SidebarProps) {
   const router = useRouter();
   const [submenuOpen, setSubmenuOpen] = useState(null); // which menu is open
   const [userData, setUserData] = useState<any>();

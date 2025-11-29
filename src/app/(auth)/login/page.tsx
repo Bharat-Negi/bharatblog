@@ -70,10 +70,14 @@ export default function login() {
             {buttonDisabled ? "Fill Input" : "Login"}
           </button>
         </form>
-        <div className="signup">
+        <div className="signup">          
           <span className="signup">
             Don't have an account?&nbsp;
             <Link href="/signup">Signup</Link>
+          </span><br/>
+          <span className="signup">
+            Go Home&nbsp;
+            <Link href="/">Home</Link>
           </span>
         </div>
       </div>
