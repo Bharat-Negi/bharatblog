@@ -3,7 +3,9 @@ import { Toaster } from "react-hot-toast";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "boxicons/css/boxicons.min.css";
 import "../dashboard.css";
-import DashboardWrapper from "./DashboardWrapper";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import DashboardWrapper from "./dash-page/DashboardWrapper";
+import NoteState from "@/context/notes/NoteState";
 
 export const metadata: Metadata = {
   title: "DashBoard Page",
@@ -18,8 +20,10 @@ export default function DashboardLayout({
   return (
     <html lang="en">
       <body>
-        <DashboardWrapper>{children}</DashboardWrapper>
-        <Toaster position="top-right" />
+        <NoteState>
+          <DashboardWrapper>{children}</DashboardWrapper>
+          <Toaster position="top-right" />
+        </NoteState>
       </body>
     </html>
   );
