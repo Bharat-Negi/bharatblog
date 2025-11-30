@@ -48,6 +48,9 @@ export default function LeftMenu({
     loadUser();
   }, []); // runs only once when dashboard page loads
 
+  const capitalize = (str: string = "") =>
+  str.charAt(0).toUpperCase() + str.slice(1);
+
   return (
     <div className={`sidebar ${sidebarClosed ? "close" : ""}`}>
       {/* Logo */}
@@ -119,8 +122,7 @@ export default function LeftMenu({
 
             <div className="name-job">
               <div className="profile_name">
-                {userData?.username?.charAt(0).toUpperCase() +
-                  userData?.username?.slice(1)}
+                {capitalize(userData?.username)}
               </div>
 
               <div className="job">

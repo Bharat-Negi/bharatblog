@@ -51,7 +51,7 @@ export default function dashPage() {
             <CardPage
               name={capitalize(userData?.username)}
               email={userData?.email}
-            />
+            /> sdsdsdsdsd
           </Col>
         </Row>
         <Row>
