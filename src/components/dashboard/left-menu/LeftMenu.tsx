@@ -1,10 +1,35 @@
 "use client";
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { toast } from "react-hot-toast";
 import Link from "next/link";
 import notesContext from "@/context/notes/notesContext";
+
+// Type definitions
+type SubmenuItem = {
+  label: string;
+  path: string;
+};
+
+type MenuItem = {
+  label: string;
+  path: string;
+  icon: string;
+  adminOnly?: boolean;
+  submenu?: SubmenuItem[];
+};
+
+type UserData = {
+  username: string;
+  isAdmin: boolean;
+  // Add other user properties as needed
+};
+
+type NotesContextType = {
+  menuItems: MenuItem[];
+  // Add other context properties as needed
+};
 
 type SidebarProps = {
   sidebarClosed: boolean;
@@ -15,41 +40,52 @@ export default function LeftMenu({
   sidebarClosed,
   toggleSidebar,
 }: SidebarProps) {
-  const { menuItems } = useContext(notesContext);
+  const { menuItems } = useContext(notesContext) as NotesContextType;
   const router = useRouter();
-  const [submenuOpen, setSubmenuOpen] = useState(null); // which menu is open
-  const [userData, setUserData] = useState<any>();
+  const pathname = usePathname(); // Get current path for active link
+  const [submenuOpen, setSubmenuOpen] = useState<number | null>(null);
+  const [userData, setUserData] = useState<UserData | null>(null);
 
-  const toggleSubmenu = (index: any) => {
+  const toggleSubmenu = (index: number) => {
     setSubmenuOpen(submenuOpen === index ? null : index);
   };
 
-  // this code for logout
-  const logout = async () => {
+  // Check if a link is active
+  const isLinkActive = (path: string): boolean => {
+    return pathname === path;
+  };
+
+  // Check if a submenu link is active
+  const isSubmenuActive = (submenuItems: SubmenuItem[]): boolean => {
+    return submenuItems.some(item => isLinkActive(item.path));
+  };
+
+  // Logout function
+  const logout = async (): Promise<void> => {
     localStorage.setItem("login_toast_shown", "");
     try {
       await axios.get("/api/users/logout");
       router.push("/login");
-      toast.success("You are logout");
+      toast.success("You are logged out");
     } catch (error: any) {
       toast.error(error.message);
     }
   };
 
   useEffect(() => {
-    async function loadUser() {
+    async function loadUser(): Promise<void> {
       try {
-        const response = await axios.post("/api/users/me");
-        setUserData(response.data.data); // store in state
+        const response = await axios.post<{ data: UserData }>("/api/users/me");
+        setUserData(response.data.data);
       } catch (error) {
-        console.log(error);
+        console.log("Error loading user data:", error);
       }
     }
     loadUser();
-  }, []); // runs only once when dashboard page loads
+  }, []);
 
-  const capitalize = (str: string = "") =>
-  str.charAt(0).toUpperCase() + str.slice(1);
+  const capitalize = (str: string = ""): string =>
+    str.charAt(0).toUpperCase() + str.slice(1);
 
   return (
     <div className={`sidebar ${sidebarClosed ? "close" : ""}`}>
@@ -61,15 +97,20 @@ export default function LeftMenu({
 
       {/* Menu */}
       <ul className="nav-links">
-        {menuItems.map((item:any, index:number) => {
+        {menuItems.map((item: MenuItem, index: number) => {
           // Hide admin items for normal users
           if (item.adminOnly && !userData?.isAdmin) return null;
+
+          // Check if this menu item or its submenu is active
+          const isActive = item.submenu 
+            ? isSubmenuActive(item.submenu) || isLinkActive(item.path)
+            : isLinkActive(item.path);
 
           // Normal menu item
           if (!item.submenu) {
             return (
-              <li key={index}>
-                <Link href={item.path}>
+              <li key={index} className={isActive ? "active" : ""}>
+                <Link href={item.path} className={isActive ? "active-link" : ""}>
                   <i className={item.icon}></i>
                   <span className="link_name">{item.label}</span>
                 </Link>
@@ -81,10 +122,13 @@ export default function LeftMenu({
           return (
             <li
               key={index}
-              className={`${submenuOpen === index ? "showMenu" : ""}`}
+              className={`${submenuOpen === index ? "showMenu" : ""} ${isActive ? "active" : ""}`}
             >
               <div className="iocn-link">
-                <Link href={item.path}>
+                <Link 
+                  href={item.path} 
+                  className={isLinkActive(item.path) ? "active-link" : ""}
+                >
                   <i className={item.icon}></i>
                   <span className="link_name">{item.label}</span>
                 </Link>
@@ -98,14 +142,22 @@ export default function LeftMenu({
               {/* Submenu */}
               <ul className="sub-menu">
                 <li>
-                  <Link className="link_name" href="#">
+                  <Link 
+                    className={`link_name ${isLinkActive(item.path) ? "active-link" : ""}`} 
+                    href={item.path}
+                  >
                     {item.label}
                   </Link>
                 </li>
 
-                {item.submenu.map((sub:any, i:number) => (
-                  <li key={i}>
-                    <Link href={sub.path}>{sub.label}</Link>
+                {item.submenu.map((sub: SubmenuItem, i: number) => (
+                  <li key={i} className={isLinkActive(sub.path) ? "active" : ""}>
+                    <Link 
+                      href={sub.path} 
+                      className={isLinkActive(sub.path) ? "active-link" : ""}
+                    >
+                      {sub.label}
+                    </Link>
                   </li>
                 ))}
               </ul>

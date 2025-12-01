@@ -114,7 +114,7 @@
 .sidebar .nav-links li.showMenu .sub-menu{
   display: block;
 }
-.sidebar .nav-links li.showMenu .iocn-link{
+.sidebar .nav-links li.active, .sidebar .nav-links li.active .iocn-link{
   background: #1d1b31;
 }
 .sidebar .nav-links li .sub-menu a{
@@ -125,7 +125,7 @@
   opacity: 0.6;
   transition: all 0.3s ease;
 }
-.sidebar .nav-links li .sub-menu a:hover{
+.sidebar .nav-links li .sub-menu li.active a, .sidebar .nav-links li .sub-menu a:hover{
   opacity: 1;
 }
 .sidebar.close .nav-links li .sub-menu{
